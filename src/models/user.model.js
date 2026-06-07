@@ -52,6 +52,7 @@ userSchema.pre("save",async function(){
     this.password = await bcrypt.hash(this.password,10)
 })
 
+//injecting functions in User schema, can directly be accessed when an object is created 
 userSchema.methods.isPasswordCorrect = async function (password) {
    return await bcrypt.compare(password,this.password);
 }
